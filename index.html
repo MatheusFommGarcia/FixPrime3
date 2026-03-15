@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FixPrime - Sua loja de materiais de construcao com os melhores precos e qualidade. Entrega rapida e atendimento personalizado.">
+  <meta name="theme-color" content="#ff6a00">
+  <title>FixPrime - Materiais de Construcao de Qualidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="header-left">
+          <button class="menu-btn" id="menuBtn" aria-label="Menu">
+            <span id="menuIcon"><i class='bx bx-menu' style="font-size: 28px;"></i></span>
+          </button>
+          <a href="#" class="logo">
+            <img src="assets/logofp.png" alt="Logo da loja" class="logo-img">
+          </a>
+        </div>
+        
+        <nav class="desktop-nav">
+          <a href="#home" class="nav-link">Inicio</a>
+          <a href="#produtos" class="nav-link">Produtos</a>
+          <a href="#ofertas" class="nav-link">Ofertas</a>
+          <a href="#contato" class="nav-link">Contato</a>
+        </nav>
+        
+        <div class="header-right">
+          <div class="search-bar">
+            <i class='bx bx-search' style="font-size: 20px; color: rgba(255, 255, 255, 0.6);"></i>
+            <input type="text" placeholder="Buscar produtos..." id="searchInput">
+          </div>
+          
+          <button class="icon-btn mobile-search-btn" id="mobileSearchBtn" aria-label="Buscar">
+            <i class='bx bx-search' style="font-size: 20px;"></i>
+          </button>
+          
+          <button class="icon-btn cart-btn" id="cartBtn" aria-label="Carrinho de compras">
+            <i class='bx bx-cart' style="font-size: 24px;"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+          
+          <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="cta-btn">
+            <i class='bx bxl-whatsapp' style="font-size: 20px;"></i>
+            <span class="cta-text-short">Contato</span>
+            <span class="cta-text-long">Central de Atendimento</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
+    <div class="mobile-menu-panel">
+      <div class="mobile-menu-content">
+        <div class="mobile-search">
+          <i class='bx bx-search' style="font-size: 20px; color: var(--muted-foreground);"></i>
+          <input type="text" placeholder="Buscar produtos..." id="mobileMenuSearchInput">
+        </div>
+        <nav class="mobile-nav">
+          <a href="#home" class="mobile-nav-link">Inicio</a>
+          <a href="#produtos" class="mobile-nav-link">Produtos</a>
+          <a href="#ofertas" class="mobile-nav-link">Ofertas</a>
+          <a href="#contato" class="mobile-nav-link">Contato</a>
+        </nav>
+        <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="mobile-cta">
+          <i class='bx bxl-whatsapp' style="font-size: 20px;"></i>
+          Central de Atendimento
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h2 class="cart-title">Carrinho de Compras</h2>
+        <button class="cart-close" id="cartClose" aria-label="Fechar carrinho">
+          <i class='bx bx-x' style="font-size: 28px;"></i>
+        </button>
+      </div>
+      <div class="cart-content" id="cartContent">
+        <div class="cart-empty" id="cartEmpty">
+          <i class='bx bx-cart' style="font-size: 64px; color: var(--muted-foreground); opacity: 0.5;"></i>
+          <p>Seu carrinho esta vazio</p>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+      </div>
+      <div class="cart-footer" id="cartFooter" style="display: none;">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span class="cart-total-value" id="cartTotal">R$ 0,00</span>
+        </div>
+        
+        <a href="index2.html" style="text-decoration: none;"><button class="cart-checkout-btn" id="cartCheckout">
+          Prosseguir para pagamento
+        </button></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-spacer"></div>
+  
+  <div class="benefits-bar">
+    <div class="benefits-track" id="benefitsTrack">
+      <div class="benefit-item">
+        <i class='bx bx-truck' style="font-size: 20px;"></i>
+        <span>Frete Gratis acima de R$ 299</span>
+      </div>
+      <div class="benefit-item">
+        <i class='bx bx-purchase-tag' style="font-size: 20px;"></i>
+        <span>Descontos para profissionais</span>
+      </div>
+      <div class="benefit-item">
+        <i class='bx bx-map' style="font-size: 20px;"></i>
+        <span>Entrega em toda regiao</span>
+      </div>
+      <div class="benefit-item">
+        <i class='bx bx-credit-card' style="font-size: 20px;"></i>
+        <span>Parcele em ate 12x</span>
+      </div>
+      <div class="benefit-item">
+        <i class='bx bx-shield-quarter' style="font-size: 20px;"></i>
+        <span>Compra 100% segura</span>
+      </div>
+      <div class="benefit-item">
+        <i class='bx bx-truck' style="font-size: 20px;"></i>
+        <span>Frete Gratis acima de R$ 299</span>
+      </div>
+      <div class="benefit-item">
+        <i class='bx bx-purchase-tag' style="font-size: 20px;"></i>
+        <span>Descontos para profissionais</span>
+      </div>
+      <div class="benefit-item">
+        <i class='bx bx-map' style="font-size: 20px;"></i>
+        <span>Entrega em toda regiao</span>
+      </div>
+      <div class="benefit-item">
+        <i class='bx bx-credit-card' style="font-size: 20px;"></i>
+        <span>Parcele em ate 12x</span>
+      </div>
+      <div class="benefit-item">
+        <i class='bx bx-shield-quarter' style="font-size: 20px;"></i>
+        <span>Compra 100% segura</span>
+      </div>
+    </div>
+  </div>
+  
+  <section class="carousel" id="home">
+    <div class="carousel-inner" id="carouselInner">
+      <div class="carousel-slide active" data-index="0">
+        <div class="slide-content">
+          <div class="slide-image-container">
+            <img src="" alt="Banner Ferramentas Profissionais" class="slide-image" data-slide="0">
+          </div>
+          <div class="slide-overlay">
+            <div class="container">
+              <div class="slide-text">
+                <span class="slide-badge">Ate 30% de desconto</span>
+                <h1 class="slide-title">Ferramentas Profissionais</h1>
+                <p class="slide-desc">As melhores marcas para sua obra</p>
+                <button class="slide-btn" data-category="ferramentas">Ver Ofertas</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide" data-index="1">
+        <div class="slide-content">
+          <div class="slide-image-container">
+            <img src="" alt="Banner Material Eletrico" class="slide-image" data-slide="1">
+          </div>
+          <div class="slide-overlay">
+            <div class="container">
+              <div class="slide-text">
+                <span class="slide-badge">Lancamentos 2026</span>
+                <h1 class="slide-title">Material Eletrico</h1>
+                <p class="slide-desc">Seguranca e qualidade garantida</p>
+                <button class="slide-btn" data-category="eletrico">Ver Ofertas</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide" data-index="2">
+        <div class="slide-content">
+          <div class="slide-image-container">
+            <img src="" alt="Banner Tintas e Acabamentos" class="slide-image" data-slide="2">
+          </div>
+          <div class="slide-overlay">
+            <div class="container">
+              <div class="slide-text">
+                <span class="slide-badge">Compre 3 pague 2</span>
+                <h1 class="slide-title">Tintas e Acabamentos</h1>
+                <p class="slide-desc">Cores que transformam ambientes</p>
+                <button class="slide-btn" data-category="tintas">Ver Ofertas</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-arrow prev" id="carouselPrev" aria-label="Slide anterior">
+      <i class='bx bx-chevron-left' style="font-size: 28px;"></i>
+    </button>
+    <button class="carousel-arrow next" id="carouselNext" aria-label="Proximo slide">
+      <i class='bx bx-chevron-right' style="font-size: 28px;"></i>
+    </button>
+    <div class="carousel-dots" id="carouselDots">
+      <button class="carousel-dot active" data-index="0" aria-label="Ir para slide 1"></button>
+      <button class="carousel-dot" data-index="1" aria-label="Ir para slide 2"></button>
+      <button class="carousel-dot" data-index="2" aria-label="Ir para slide 3"></button>
+    </div>
+  </section>
+  
+  <section class="offers-section" id="ofertas">
+    <div class="container">
+      <div class="offers-header">
+        <div>
+          <h2 class="offers-title">Ofertas <span>Imperdiveis</span></h2>
+          <p class="offers-subtitle">Aproveite descontos exclusivos por tempo limitado</p>
+        </div>
+        <div class="offers-timer-container">
+          <div class="offers-timer-label">
+            <i class='bx bx-time-five' style="font-size: 28px; color: var(--primary);"></i>
+            <span>Oferta termina em:</span>
+          </div>
+          <div class="offers-timer-boxes">
+            <div class="timer-box">
+              <span class="timer-value" id="timerDays">00</span>
+              <span class="timer-unit">Dias</span>
+            </div>
+            <div class="timer-separator">:</div>
+            <div class="timer-box">
+              <span class="timer-value" id="timerHours">00</span>
+              <span class="timer-unit">Horas</span>
+            </div>
+            <div class="timer-separator">:</div>
+            <div class="timer-box">
+              <span class="timer-value" id="timerMinutes">00</span>
+              <span class="timer-unit">Min</span>
+            </div>
+            <div class="timer-separator">:</div>
+            <div class="timer-box">
+              <span class="timer-value" id="timerSeconds">00</span>
+              <span class="timer-unit">Seg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offers-grid">
+        <div class="offer-card gradient-1" data-category="ferramentas">
+          <div class="offer-bg-pattern">
+            <div class="offer-bg-circle-1"></div>
+            <div class="offer-bg-circle-2"></div>
+          </div>
+          <div class="offer-content">
+            <span class="offer-badge">Ate 30% OFF</span>
+            <h3 class="offer-title">Ferramentas Eletricas</h3>
+            <p class="offer-desc">Furadeiras, serras e muito mais</p>
+            <button class="offer-btn" data-category="ferramentas">
+              Ver Ofertas <i class='bx bx-right-arrow-alt' style="font-size: 20px;"></i>
+            </button>
+          </div>
+        </div>
+        <div class="offer-card gradient-2" data-category="hidraulico">
+          <div class="offer-bg-pattern">
+            <div class="offer-bg-circle-1"></div>
+            <div class="offer-bg-circle-2"></div>
+          </div>
+          <div class="offer-content">
+            <span class="offer-badge">Ate 25% OFF</span>
+            <h3 class="offer-title">Material Hidraulico</h3>
+            <p class="offer-desc">Tubos, conexoes e registros</p>
+            <button class="offer-btn" data-category="hidraulico">
+              Ver Ofertas <i class='bx bx-right-arrow-alt' style="font-size: 20px;"></i>
+            </button>
+          </div>
+        </div>
+        <div class="offer-card gradient-3" data-category="tintas">
+          <div class="offer-bg-pattern">
+            <div class="offer-bg-circle-1"></div>
+            <div class="offer-bg-circle-2"></div>
+          </div>
+          <div class="offer-content">
+            <span class="offer-badge">Ate 40% OFF</span>
+            <h3 class="offer-title">Tintas Premium</h3>
+            <p class="offer-desc">Compre 3 e leve 4</p>
+            <button class="offer-btn" data-category="tintas">
+              Ver Ofertas <i class='bx bx-right-arrow-alt' style="font-size: 20px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="products-section" id="produtos">
+    <div class="container">
+      <h2 class="section-title">Nossos <span>Produtos</span></h2>
+      
+      <div class="filters">
+        <div class="filter-group">
+          <label class="filter-label" for="brandFilter">Marca</label>
+          <select class="filter-select" id="brandFilter">
+            <option value="all">Todas as marcas</option>
+            <option value="bosch">Bosch</option>
+            <option value="dewalt">DeWalt</option>
+            <option value="makita">Makita</option>
+            <option value="tramontina">Tramontina</option>
+            <option value="stanley">Stanley</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="priceFilter">Faixa de Preco</label>
+          <select class="filter-select" id="priceFilter">
+            <option value="all">Todos os precos</option>
+            <option value="low">Ate R$ 100</option>
+            <option value="mid">R$ 100 - R$ 500</option>
+            <option value="high">Acima de R$ 500</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="categoryFilter">Categoria</label>
+          <select class="filter-select" id="categoryFilter">
+            <option value="all">Todas as categorias</option>
+            <option value="ferramentas">Ferramentas</option>
+            <option value="eletrico">Material Eletrico</option>
+            <option value="hidraulico">Material Hidraulico</option>
+            <option value="tintas">Tintas</option>
+            <option value="iluminacao">Iluminacao</option>
+          </select>
+        </div>
+        <div class="filter-clear">
+          <button class="filter-clear-btn" id="clearFilters">Limpar Filtros</button>
+        </div>
+      </div>
+      
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+  
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Fechar">
+        <i class='bx bx-x' style="font-size: 24px;"></i>
+      </button>
+      <div class="modal-grid">
+        <div class="modal-gallery">
+          <div class="modal-main-image">
+            <div class="modal-image-placeholder" id="modalImagePlaceholder" style="width: 100%; height: 100%;">
+              <img src="" alt="Imagem do produto" id="modalProductImage" style="width: 100%; height: 100%; object-fit: contain; border-radius: 0.75rem;">
+            </div>
+            <button class="modal-gallery-arrow prev" id="modalPrevImage" aria-label="Imagem anterior">
+              <i class='bx bx-chevron-left'></i>
+            </button>
+            <button class="modal-gallery-arrow next" id="modalNextImage" aria-label="Proxima imagem">
+              <i class='bx bx-chevron-right'></i>
+            </button>
+          </div>
+          <div class="modal-thumbnails" id="modalThumbnails">
+            <button class="modal-thumbnail active" data-index="0">1</button>
+            <button class="modal-thumbnail" data-index="1">2</button>
+            <button class="modal-thumbnail" data-index="2">3</button>
+            <button class="modal-thumbnail" data-index="3">4</button>
+          </div>
+        </div>
+        <div class="modal-details">
+          <p class="modal-brand" id="modalBrand">BOSCH</p>
+          <h2 class="modal-name" id="modalName">Furadeira de Impacto 750W</h2>
+          <div class="modal-price-section">
+            <div class="modal-price-row">
+              <span class="modal-price-current" id="modalPrice">R$ 349,90</span>
+              <span class="modal-price-original" id="modalOriginalPrice">R$ 449,90</span>
+            </div>
+            <span class="modal-discount" id="modalDiscount">22% de desconto</span>
+            <p class="modal-installments" id="modalInstallments">ou 12x de R$ 29,16 sem juros</p>
+          </div>
+          
+          <div class="modal-colors">
+            <h3 class="modal-section-title">Cor</h3>
+            <div class="color-options" id="colorOptions">
+              <button class="color-option active" data-color="Padrao" style="background-color: #1a1a1a;" title="Padrao"></button>
+              <button class="color-option" data-color="Azul" style="background-color: #2563eb;" title="Azul"></button>
+              <button class="color-option" data-color="Vermelho" style="background-color: #dc2626;" title="Vermelho"></button>
+            </div>
+            <span class="selected-color" id="selectedColor">Cor selecionada: Padrao</span>
+          </div>
+          
+          <div class="modal-description">
+            <h3 class="modal-section-title">Descricao</h3>
+            <p class="modal-section-text" id="modalDescription">Produto de alta qualidade da marca Bosch. Ideal para profissionais e entusiastas que buscam o melhor em materiais de construcao. Garantia de 12 meses direto com o fabricante.</p>
+          </div>
+          <div class="modal-features">
+            <h3 class="modal-section-title">Caracteristicas</h3>
+            <ul class="modal-features-list" id="modalFeaturesList">
+              <li><strong>Cor:</strong> <span id="featureColor">Padrao</span></li>
+              <li><strong>Marca:</strong> <span id="featureBrand">Bosch</span></li>
+              <li><strong>Categoria:</strong> <span id="featureCategory">Ferramentas</span></li>
+              <li><strong>Garantia:</strong> 12 meses</li>
+              <li><strong>Origem:</strong> Produto original</li>
+            </ul>
+          </div>
+          <div class="modal-actions">
+            <button class="modal-add-cart">
+              <i class='bx bx-cart-add' style="font-size: 20px;"></i>
+              Adicionar ao Carrinho
+            </button>
+            <button class="modal-favorite-btn" id="modalFavorite">
+              <i class='bx bx-heart' style="font-size: 20px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mobile-sheet-overlay" id="mobileSheet">
+    <div class="mobile-sheet-backdrop" id="mobileSheetBackdrop"></div>
+    <div class="mobile-sheet-panel">
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-header">
+        <div class="mobile-sheet-product-preview">
+          <div class="mobile-sheet-image" id="mobileSheetImage"></div>
+          <div class="mobile-sheet-info">
+            <p class="mobile-sheet-brand" id="mobileSheetBrand">BOSCH</p>
+            <h3 class="mobile-sheet-name" id="mobileSheetName">Furadeira de Impacto 750W</h3>
+            <div class="mobile-sheet-price-row">
+              <span class="mobile-sheet-price" id="mobileSheetPrice">R$ 349,90</span>
+              <span class="mobile-sheet-original-price" id="mobileSheetOriginalPrice">R$ 449,90</span>
+            </div>
+          </div>
+        </div>
+        <button class="mobile-sheet-close" id="mobileSheetClose" aria-label="Fechar">
+          <i class='bx bx-x' style="font-size: 28px;"></i>
+        </button>
+      </div>
+      <div class="mobile-sheet-content">
+        <div class="mobile-sheet-section">
+          <h4 class="mobile-sheet-section-title">Selecione a Cor</h4>
+          <div class="mobile-sheet-colors" id="mobileSheetColors">
+            <button class="mobile-sheet-color-option active" data-color="Padrao">
+              <span class="color-circle" style="background-color: #1a1a1a;"></span>
+              <span class="color-name">Padrao</span>
+            </button>
+            <button class="mobile-sheet-color-option" data-color="Azul">
+              <span class="color-circle" style="background-color: #2563eb;"></span>
+              <span class="color-name">Azul</span>
+            </button>
+            <button class="mobile-sheet-color-option" data-color="Vermelho">
+              <span class="color-circle" style="background-color: #dc2626;"></span>
+              <span class="color-name">Vermelho</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="mobile-sheet-section">
+          <h4 class="mobile-sheet-section-title">Descricao</h4>
+          <p class="mobile-sheet-description" id="mobileSheetDescription">Produto de alta qualidade. Ideal para profissionais e entusiastas que buscam o melhor em materiais de construcao.</p>
+        </div>
+        
+        <div class="mobile-sheet-section">
+          <h4 class="mobile-sheet-section-title">Caracteristicas</h4>
+          <div class="mobile-sheet-specs">
+            <div class="mobile-sheet-spec">
+              <span class="spec-label">Cor</span>
+              <span class="spec-value" id="mobileSheetSpecColor">Padrao</span>
+            </div>
+            <div class="mobile-sheet-spec">
+              <span class="spec-label">Marca</span>
+              <span class="spec-value" id="mobileSheetSpecBrand">Bosch</span>
+            </div>
+            <div class="mobile-sheet-spec">
+              <span class="spec-label">Categoria</span>
+              <span class="spec-value" id="mobileSheetSpecCategory">Ferramentas</span>
+            </div>
+            <div class="mobile-sheet-spec">
+              <span class="spec-label">Garantia</span>
+              <span class="spec-value">12 meses</span>
+            </div>
+            <div class="mobile-sheet-spec">
+              <span class="spec-label">Origem</span>
+              <span class="spec-value">Produto original</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-sheet-footer">
+        <button class="mobile-sheet-add-cart" id="mobileSheetAddCart">
+          <i class='bx bx-cart-add' style="font-size: 24px;"></i>
+          Adicionar ao Carrinho
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer" id="contato">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <a href="#" class="logo" style="margin-bottom: 1rem; display: inline-block;">
+              <img src="assets/logofp.png" alt="Logo FixPrime" style="height: 40px;">
+            </a>
+            <p class="footer-about-text">Ha mais de 15 anos oferecendo os melhores materiais de construcao com qualidade e precos justos. Sua obra comeca aqui!</p>
+            <div class="footer-social">
+              <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="WhatsApp">
+                <i class='bx bxl-whatsapp' style='font-size: 24px;'></i>
+              </a>
+              <a href="https://instagram.com/fixprime" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+                <i class='bx bxl-instagram' style='font-size: 24px;'></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="footer-title">Links Rapidos</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Inicio</a></li>
+              <li><a href="#produtos">Produtos</a></li>
+              <li><a href="#ofertas">Ofertas</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-title">Categorias</h3>
+            <ul class="footer-links">
+              <li><a href="#produtos" onclick="filtrarPeloRodape('ferramentas')">Ferramentas</a></li>
+              <li><a href="#produtos" onclick="filtrarPeloRodape('eletrico')">Material Eletrico</a></li>
+              <li><a href="#produtos" onclick="filtrarPeloRodape('hidraulico')">Material Hidraulico</a></li>
+              <li><a href="#produtos" onclick="filtrarPeloRodape('tintas')">Tintas e Acabamentos</a></li>
+              <li><a href="#produtos" onclick="filtrarPeloRodape('iluminacao')">Iluminacao</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-title">Contato</h3>
+            <div class="footer-contact-item">
+              <i class='bx bx-phone' style='font-size: 20px; color: var(--primary); margin-top: 2px;'></i>
+              <span>(11) 3000-0000</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class='bx bx-envelope' style='font-size: 20px; color: var(--primary); margin-top: 2px;'></i>
+              <span>contato@fixprime.com.br</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class='bx bx-time-five' style='font-size: 20px; color: var(--primary); margin-top: 2px;'></i>
+              <span>Seg - Sab: 8h as 18h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-inner">
+          <p class="footer-copyright">2026 FixPrime - Todos os direitos reservados</p>
+          <div class="footer-legal">
+            <a href="#">Politica de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <div class="floating-social" id="floatingSocial">
+    <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp" aria-label="WhatsApp">
+      <i class='bx bxl-whatsapp' style='font-size: 28px;'></i>
+    </a>
+    <a href="https://instagram.com/fixprime" target="_blank" rel="noopener noreferrer" class="floating-btn instagram" aria-label="Instagram">
+      <i class='bx bxl-instagram' style='font-size: 28px;'></i>
+    </a>
+  </div>
+  
+  <script src="scripts/script.js"></script>
+</body>
+</html>
